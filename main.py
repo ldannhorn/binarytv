@@ -1,7 +1,7 @@
 import pygame
 from threading import Thread
 from random import randint
-import io
+import io, sys
 
 from row import Row
 from canvas import Canvas
@@ -149,8 +149,8 @@ if __name__ == "__main__":
     pygame_thread.start()
 
     # Start reader thread
-    reader_thread = Thread(target=thread_reader, args=[canvas, "playlist", ["demo.png", "demo2.txt", "crash"]], daemon=True)
+    print(f'{sys.argv[1]}' )
+    reader_thread = Thread(target=thread_reader, args=[ canvas, "playlist", [f'{sys.argv[1]}', "demo.png", "demo2.txt", "crash"] ], daemon=True)
     reader_thread.start()
-
 
 
